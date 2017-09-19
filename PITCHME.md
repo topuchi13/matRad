@@ -1,6 +1,6 @@
 ##  
 ![Logo](dicomImport/matrad_logo.png)
-A radiation treatment planning software for intensity-modulated <span style="color:blue">photon</span>, proton, and carbon ion therapy.
+A radiation treatment planning software for intensity-modulated <span style="color:rgb(0,107,182)">photon</span>, proton, and carbon ion therapy.
 
 https://e0404.github.io/matRad/
 ---
