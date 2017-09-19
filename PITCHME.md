@@ -38,9 +38,8 @@ An open source software for radiation treatment planning of intensity-modulated 
 ![Logo](https://github.com/e0404/matRad/wiki/images/matRadPerformanceTable.png)
 ---
 ### matRad webinar 
-https://www.youtube.com/watch?v=40_n7BIqLdw&t=1s
 
-![Video](https://www.youtube.com/watch?v=40_n7BIqLdw&t=1s)
+![Video](https://www.youtube.com/embed/watch?v=40_n7BIqLdw&t=1s)
 
 ---
 ### Code Example:
@@ -52,9 +51,9 @@ stf(NumBeam).isoCenter(1) = stf(NumBeam).isoCenter(1) + 3;
 
 resultGUI_isoShift = matRad_calcDoseDirect(ct,stf,pln,cst,w);
 
-IsoCenterSlice = round(stf(1,1).isoCenter);
+slice = round(stf.isoCenter(3)./ct.resolution);
 
-DoseDiff = resultGUI(:,:,IsoCenterSlice) - resultGUI_isoShift(:,:,IsoCenterSlice);
+DoseDiff = resultGUI(:,:,slice) - resultGUI_isoShift(:,:,slice);
 
 figure,imagesc(DoseDiff); 
 ```
