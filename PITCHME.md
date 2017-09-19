@@ -31,7 +31,7 @@ An open source software for radiation treatment planning of intensity-modulated 
 
 ---
 
-### Validation 
+# Validation 
 ![Logo](https://github.com/e0404/matRad/wiki/images/matRadvalidation.png)
 
 ---
@@ -44,20 +44,10 @@ An open source software for radiation treatment planning of intensity-modulated 
 
 ---
 ### Code Example:
-Simulate an iso-center shift
+# Simulate an iso-center shift
 
-```
-NumBeam = 2;
-stf(NumBeam).isoCenter(1) = stf(NumBeam).isoCenter(1) + 3;
++++?gist=becker89/fc6031d7c87dd4f2e16d7a72598a5556
 
-resultGUI_isoShift = matRad_calcDoseDirect(ct,stf,pln,cst,w);
-
-slice = round(stf.isoCenter(3)./ct.resolution);
-
-DoseDiff = resultGUI(:,:,slice) - resultGUI_isoShift(:,:,slice);
-
-figure,imagesc(DoseDiff); 
-```
 @[1-2](Lets simulate a lateral displacement in x of the second beam)
 @[4](recalculate dose using previously optimized beamlet weights)
 @[6](determine axial iso center slice)
