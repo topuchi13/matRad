@@ -1,6 +1,10 @@
 ##  
 ![Logo](dicomImport/matrad_logo.png)
-An open source software for radiation treatment planning of intensity-modulated photon, proton, and carbon ion therapy.
+A radiation treatment planning software for intensity-modulated <span style="color:blue">photon</span>, proton, and carbon ion therapy.
+
+https://e0404.github.io/matRad/
+---
+## Free Software for reasearch and education
 ---
 ### matRad provides functionalites for 
 - DICOM import
@@ -31,10 +35,27 @@ An open source software for radiation treatment planning of intensity-modulated 
 ### matRad webinar 
 ![Video](https://www.youtube.com/embed/40_n7BIqLdw)
 ---
-### Code Example:
+## Get in touch
+### https://e0404.github.io/matRad/
+### matRad@dkfz.de
+
+---
+### Code Example
 +++?gist=becker89/fc6031d7c87dd4f2e16d7a72598a5556
 @[1-2](Lets simulate a lateral displacement in x of the second beam)
 @[4](recalculate dose using previously optimized beamlet weights)
 @[6](determine axial iso center slice)
 @[8](calculate dose difference)
 @[10](plot dose difference slice)
+---
+### Code Example
+
+```matlab
+%% dose calculation
+if strcmp(pln.radiationMode,'photons')
+    dij = matRad_calcPhotonDose(ct,stf,pln,cst);
+    %dij = matRad_calcPhotonDoseVmc(ct,stf,pln,cst);
+elseif strcmp(pln.radiationMode,'protons') || strcmp(pln.radiationMode,'carbon')
+    dij = matRad_calcParticleDose(ct,stf,pln,cst);
+end
+```

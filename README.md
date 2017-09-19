@@ -1,4 +1,4 @@
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/e0404/matRad/dev_pitch) 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/becker89/matRad/dev_pitch) 
 
 # General information
 
