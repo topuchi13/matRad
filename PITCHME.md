@@ -16,18 +16,16 @@ An open source software for radiation treatment planning of intensity-modulated 
 - Treatment plan visualization and evaluation
 
 ---
-### Code
+### GUI
+![Logo](https://github.com/e0404/matRad/wiki/images/GUI-Guide_optimizedGUIScreenshot.png)
 
-```
-stf       = matRad_generateStf(ct,cst,pln);
-dij       = matRad_calcParticleDose(ct,stf,pln,cst);
-resultGUI = matRad_fluenceOptimization(dij,cst,pln);
-matRadGUI
-```
-@[1]
-@[2-4]
-
+![Logo](https://github.com/e0404/matRad.wiki/images/GUI-Guide_optimizedGUIScreenshot.png)
 ---
-### Code
----?gist=becker89/d1681e8ff3ba1e22dd26b645ad6b0544
-
+### Code Example
+gist=becker89/d1681e8ff3ba1e22dd26b645ad6b0544
+@[1]
+@[3-7]
+@[9-10]
+@[12-13]
+@[15-16]
+@[18-19]
