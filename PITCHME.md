@@ -1,6 +1,6 @@
 ## matRad 
 
-![Image](https://github.com/e0404/matRad/blob/master/dicomImport/matrad_logo.png)
+![Logo](dicomImport/matrad_logo.png)
 An open source software for radiation treatment planning of intensity-modulated photon, proton, and carbon ion therapy.
 
 ---
