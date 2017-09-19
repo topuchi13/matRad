@@ -1,11 +1,13 @@
 ##  
 ![Logo](dicomImport/matrad_logo.png)
-A radiation treatment planning software for intensity-modulated <span style="color:rgb(0,107,182)">photon</span>, proton, and carbon ion therapy.
+
+A radiation treatment planning software for intensity-modulated <span style="color:rgb(0,107,182): font-size: 4em;">photon</span>, <span style="color:rgb(0,107,182)">proton</span>, and <span style="color:rgb(0,107,182)">carbon ion</span> therapy.
 
 https://e0404.github.io/matRad/
 ---
 ## Free Software for reasearch and education
 ---
+
 ### matRad provides functionalites for 
 - DICOM import
 - Ray tracing
