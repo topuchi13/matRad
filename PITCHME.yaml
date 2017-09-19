@@ -1,3 +1,3 @@
 theme : black
-logo : dicomImport/matrad_logo.png
-footnote : "DKFZ - Department of Medical Physics - Optimization algorithms"
+logo : standalone/mattRad_icon.png
+footnote : "<a style='text-decoration:none; color: white;' DKFZ - Department of Medical Physics - Optimization algorithms</a>"

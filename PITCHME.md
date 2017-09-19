@@ -31,6 +31,7 @@ An open source software for radiation treatment planning of intensity-modulated 
 
 ---
 
+### Validation 
 ![Logo](https://github.com/e0404/matRad/wiki/images/matRadvalidation.png)
 
 ---
@@ -39,7 +40,7 @@ An open source software for radiation treatment planning of intensity-modulated 
 ---
 ### matRad webinar 
 
-![Video](https://www.youtube.com/embed/watch?v=40_n7BIqLdw&t=1s)
+![Video](https://www.youtube.com/embed/40_n7BIqLdw)
 
 ---
 ### Code Example:
