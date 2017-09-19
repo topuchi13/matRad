@@ -22,7 +22,7 @@ An open source software for radiation treatment planning of intensity-modulated 
 ![Logo](https://github.com/e0404/matRad.wiki/images/GUI-Guide_optimizedGUIScreenshot.png)
 ---
 ### Code Example
-gist=becker89/d1681e8ff3ba1e22dd26b645ad6b0544
+?gist=becker89/d1681e8ff3ba1e22dd26b645ad6b0544
 @[1]
 @[3-7]
 @[9-10]
