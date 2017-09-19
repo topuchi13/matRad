@@ -31,7 +31,6 @@ An open source software for radiation treatment planning of intensity-modulated 
 
 ---
 
-# Validation 
 ![Logo](https://github.com/e0404/matRad/wiki/images/matRadvalidation.png)
 
 ---
@@ -44,7 +43,7 @@ An open source software for radiation treatment planning of intensity-modulated 
 
 ---
 ### Code Example:
-# Simulate an iso-center shift
+ Simulate an iso-center shift
 
 +++?gist=becker89/fc6031d7c87dd4f2e16d7a72598a5556
 

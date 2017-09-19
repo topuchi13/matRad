@@ -1,3 +1,4 @@
-theme : black
+theme : white
 logo : standalone/matRad_icon.png
-footnote : "<a style='text-decoration:none; color: white;' DKFZ - Department of Medical Physics - Optimization algorithms</a>"
+footnote : "Department of Medical Physics - Optimization algorithms"
+
