@@ -24,10 +24,10 @@ An open source software for radiation treatment planning of intensity-modulated 
 +++?gist=becker89/d1681e8ff3ba1e22dd26b645ad6b0544
 @[1](import a open source liver patient)
 @[3-7](define your treatment plan)
-@[9-10](generate beam and ray geometry)
-@[12-13](dose calculation - pencil beam algorithm)
-@[15-16](inverse planning for IMPT)
-@[18-19](start GUI for visualization of result)
+@[9](generate beam and ray geometry)
+@[11](dose calculation - pencil beam algorithm)
+@[13](inverse planning for IMPT)
+@[15](start GUI for visualization of result)
 
 ---
 ### Validation
