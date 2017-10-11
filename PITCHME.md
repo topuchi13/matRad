@@ -9,7 +9,7 @@
 - DICOM import
 - ray tracing
 - photon dose calculation
-- oroton & carbon dose calculation
+- proton & carbon dose calculation
 - inverse planning 
 - multileaf collimator sequencing
 - treatment plan visualization and evaluation
