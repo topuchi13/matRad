@@ -1,4 +1,5 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/e0404/matRad/dev_pitch) 
+[![Join the chat at https://gitter.im/e0404/matRad](https://badges.gitter.im/e0404/matRad.svg)](https://gitter.im/e0404/matRad?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # General information
 

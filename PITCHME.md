@@ -1,7 +1,7 @@
 
 ![Logo](dicomImport/matrad_logo.png)
 
-###  A radiation treatment planning software for intensity-modulated <span style="color:rgb(0,107,182); font-size: 1em;">photon</span>, <span style="color:rgb(0,107,182)">proton</span>, and <span style="color:rgb(0,107,182)">carbon ion</span> therapy.
+###  A radiation treatment planning software for intensity-modulated <span style="color:rgb(0,107,182); font-size: 1em;">photon</span>, <span style="color:rgb(0,107,182)">proton</span> and <span style="color:rgb(0,107,182)">carbon ion</span> therapy.
 ---
 # <span style="color:rgb(0,107,182)">Free</span>  Software for reasearch and education
 ---
