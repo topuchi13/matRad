@@ -15,6 +15,7 @@
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+pack
 clear
 close all
 clc
@@ -22,15 +23,15 @@ clc
 % load patient data, i.e. ct, voi, cst
 
 %load HEAD_AND_NECK
-load TG119.mat
+%load TG119.mat
 %load PROSTATE.mat
 %load LIVER.mat
-%load BOXPHANTOM.mat
+load BOXPHANTOM.mat
 
 % meta information for treatment plan
 pln.bixelWidth      = 5; % [mm] / also corresponds to lateral spot spacing for particles
-pln.gantryAngles    = [0:72:359]; % [°]
-pln.couchAngles     = [0 0 0 0 0]; % [°]
+pln.gantryAngles    = [0 50 100 150 200 250 300 350]; % [°]
+pln.couchAngles     = [0 0 0 0 0 0 0 0]; % [°]
 pln.numOfBeams      = numel(pln.gantryAngles);
 pln.numOfVoxels     = prod(ct.cubeDim);
 pln.isoCenter       = ones(pln.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
@@ -44,10 +45,13 @@ pln.runDAO          = false; % 1/true: run DAO, 0/false: don't / will be ignored
 pln.machine         = 'Generic';
 
 %% initial visualization and change objective function settings if desired
-matRadGUI
+%matRadGUI
 
 %% generate steering file
 stf = matRad_generateStf(ct,cst,pln);
+
+global of_value;
+
 
 %% dose calculation
 if strcmp(pln.radiationMode,'photons')
@@ -58,7 +62,7 @@ elseif strcmp(pln.radiationMode,'protons') || strcmp(pln.radiationMode,'carbon')
 end
 
 %% inverse planning for imrt
-resultGUI = matRad_fluenceOptimization(dij,cst,pln);
+[resultGUI, info] = matRad_fluenceOptimization(dij,cst,pln);
 
 %% sequencing
 if strcmp(pln.radiationMode,'photons') && (pln.runSequencing || pln.runDAO)
@@ -74,8 +78,8 @@ if strcmp(pln.radiationMode,'photons') && pln.runDAO
 end
 
 %% start gui for visualization of result
-matRadGUI
+%matRadGUI
 
 %% dvh
-matRad_calcDVH(resultGUI,cst,pln)
+matRad_calcDVH(resultGUI,cst,pln);
 

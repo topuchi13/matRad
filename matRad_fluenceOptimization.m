@@ -189,15 +189,19 @@ funcs.jacobianstructure = @( ) matRad_getJacobStruct(dij,cst);
 % Run IPOPT.
 [wOpt, info]            = ipopt(wInit,funcs,options);
 
+
+
 % calc dose and reshape from 1D vector to 2D array
 fprintf('Calculating final cubes...\n');
 resultGUI = matRad_calcCubes(wOpt,dij,cst);
+
 resultGUI.wUnsequenced = wOpt;
 
 % unset Key Pressed Callback of Matlab command window
 if ~isdeployed
     set(h_cw, 'KeyPressedCallback',' ');
 end
+
 
 % clear global variables
 clearvars -global matRad_global_x matRad_global_d matRad_objective_function_value matRad_STRG_C_Pressed;

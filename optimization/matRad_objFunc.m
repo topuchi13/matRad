@@ -103,6 +103,8 @@ elseif isequal(objective.type, 'max DVH objective') ||...
     % claculate objective function
     f = (objective.penalty/numOfVoxels)*(deviation'*deviation);
     
+
+    
 end
       
         
