@@ -1,4 +1,4 @@
-function [resultGUI,info] = matRad_fluenceOptimization(dij,cst,pln)
+function [resultGUI,info,of_value] = matRad_fluenceOptimization(dij,cst,pln)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % matRad inverse planning wrapper function
 % 
@@ -201,6 +201,7 @@ resultGUI.wUnsequenced = wOpt;
 if ~isdeployed
     set(h_cw, 'KeyPressedCallback',' ');
 end
+
 
 
 % clear global variables

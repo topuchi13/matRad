@@ -1,4 +1,4 @@
-function f = matRad_objFuncWrapper(w,dij,cst,options)
+function [f,of_value] = matRad_objFuncWrapper(w,dij,cst,options)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % matRad IPOPT objective function wrapper
 % 
@@ -66,12 +66,9 @@ for  i = 1:size(cst,1)
 
                     f = f + matRad_objFunc(d_i,cst{i,6}(j),d_ref);
                     
-                    fprintf ('/n /n here come the numbeeeeeeeeerrrrrr /n /n');
-                    f
-                    
                     of_value = f;
                 end
-            
+                
             end
        
         end

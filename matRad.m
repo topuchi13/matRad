@@ -28,6 +28,7 @@ clc
 %load LIVER.mat
 load BOXPHANTOM.mat
 
+
 % meta information for treatment plan
 pln.bixelWidth      = 5; % [mm] / also corresponds to lateral spot spacing for particles
 pln.gantryAngles    = [0 50 100 150 200 250 300 350]; % [°]
@@ -52,7 +53,6 @@ stf = matRad_generateStf(ct,cst,pln);
 
 global of_value;
 
-
 %% dose calculation
 if strcmp(pln.radiationMode,'photons')
     dij = matRad_calcPhotonDose(ct,stf,pln,cst);
@@ -62,7 +62,7 @@ elseif strcmp(pln.radiationMode,'protons') || strcmp(pln.radiationMode,'carbon')
 end
 
 %% inverse planning for imrt
-[resultGUI, info] = matRad_fluenceOptimization(dij,cst,pln);
+[resultGUI, info, of_value] = matRad_fluenceOptimization(dij,cst,pln);
 
 %% sequencing
 if strcmp(pln.radiationMode,'photons') && (pln.runSequencing || pln.runDAO)
