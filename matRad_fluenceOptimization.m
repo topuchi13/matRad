@@ -38,7 +38,7 @@ if sum(strcmp(pln.bioOptimization,{'LEMIV_effect','LEMIV_RBExD'}))>0 && (~isfiel
     warndlg('Alpha and beta matrices for effect based and RBE optimization not available - physical optimization is carried out instead.');
     pln.bioOptimization = 'none';
 end
-
+global of_value;
 if ~isdeployed % only if _not_ running as standalone
     
     % add path for optimization functions
@@ -180,7 +180,7 @@ options.numOfScenarios  = dij.numOfScenarios;
 
 % set callback functions.
 [options.cl,options.cu] = matRad_getConstBoundsWrapper(cst,options);   
-funcs.objective         = @(x) matRad_objFuncWrapper(x,dij,cst,options);
+funcs.objective         = @(x,of_value) matRad_objFuncWrapper(x,dij,cst,options);
 funcs.constraints       = @(x) matRad_constFuncWrapper(x,dij,cst,options);
 funcs.gradient          = @(x) matRad_gradFuncWrapper(x,dij,cst,options);
 funcs.jacobian          = @(x) matRad_jacobFuncWrapper(x,dij,cst,options);
@@ -191,8 +191,10 @@ funcs.jacobianstructure = @( ) matRad_getJacobStruct(dij,cst);
 
 
 
+
 % calc dose and reshape from 1D vector to 2D array
 fprintf('Calculating final cubes...\n');
+of_value
 resultGUI = matRad_calcCubes(wOpt,dij,cst);
 
 resultGUI.wUnsequenced = wOpt;

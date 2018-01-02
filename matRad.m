@@ -64,6 +64,9 @@ end
 %% inverse planning for imrt
 [resultGUI, info, of_value] = matRad_fluenceOptimization(dij,cst,pln);
 
+fprintf('final objective function value...\n');
+of_value
+
 %% sequencing
 if strcmp(pln.radiationMode,'photons') && (pln.runSequencing || pln.runDAO)
     %resultGUI = matRad_xiaLeafSequencing(resultGUI,stf,dij,5);

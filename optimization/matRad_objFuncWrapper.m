@@ -34,7 +34,7 @@ function [f,of_value] = matRad_objFuncWrapper(w,dij,cst,options)
 
 % get current dose / effect / RBExDose vector
 d = matRad_backProjection(w,dij,options);
-
+global of_value;
 % Initialize f
 f = 0;
 
@@ -67,6 +67,7 @@ for  i = 1:size(cst,1)
                     f = f + matRad_objFunc(d_i,cst{i,6}(j),d_ref);
                     
                     of_value = f;
+                    
                 end
                 
             end
