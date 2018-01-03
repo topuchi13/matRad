@@ -29,10 +29,23 @@ clc
 load BOXPHANTOM.mat
 
 
+
+
+
+
+fields = 5;
+xa = 0;
+% Fill plan with equispaced fields
+for c=1:fields
+xa=xa+(360./fields);
+arr(c)=xa;
+end
+
 % meta information for treatment plan
-pln.bixelWidth      = 5; % [mm] / also corresponds to lateral spot spacing for particles
-pln.gantryAngles    = [0 50 100 150 200 250 300 350]; % [°]
-pln.couchAngles     = [0 0 0 0 0 0 0 0]; % [°]
+pln.bixelWidth      = 10; % [mm] / also corresponds to lateral spot spacing for particles
+% randperm(360,fields); % [°]
+pln.gantryAngles    = arr;
+pln.couchAngles     = zeros(size(pln.gantryAngles)); % [°]
 pln.numOfBeams      = numel(pln.gantryAngles);
 pln.numOfVoxels     = prod(ct.cubeDim);
 pln.isoCenter       = ones(pln.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
@@ -62,10 +75,36 @@ elseif strcmp(pln.radiationMode,'protons') || strcmp(pln.radiationMode,'carbon')
 end
 
 %% inverse planning for imrt
-[resultGUI, info, of_value] = matRad_fluenceOptimization(dij,cst,pln);
+%[resultGUI, info, of_value] = matRad_fluenceOptimization(dij,cst,pln);
 
-fprintf('final objective function value...\n');
-of_value
+%fprintf('final objective function value...\n');
+%of_value
+
+
+%% BAO
+[resultGUI,info,of_value] = matRad_BaoFunc(dij,cst,pln);
+
+
+%while of_value > 12
+%     fields = fields + 1;
+%     pln.gantryAngles    = randperm(360,fields); % [°]
+%     pln.couchAngles     = zeros(size(pln.gantryAngles)); % [°]
+%     pln.numOfBeams      = numel(pln.gantryAngles);
+%     pln.isoCenter       = ones(pln.numOfBeams,1) * matRad_getIsoCenter(cst,ct,0);
+%     
+%     stf = matRad_generateStf(ct,cst,pln);
+%     
+%     dij = matRad_calcPhotonDose(ct,stf,pln,cst);
+%     [resultGUI,info,of_value] = matRad_BaoFunc(dij,cst,pln);
+
+    options.FunctionTolerance = 2;
+    options.MaxStallGenerations = 3;
+    options.PopulationSize = 10;
+    options.InitialPopulationMatrix = arr;
+    fit_fun = @(set) ga_of(set,fields,ct,cst,pln);
+    [x,fval] = ga(fit_fun,fields,options);
+%end
+
 
 %% sequencing
 if strcmp(pln.radiationMode,'photons') && (pln.runSequencing || pln.runDAO)
@@ -81,8 +120,7 @@ if strcmp(pln.radiationMode,'photons') && pln.runDAO
 end
 
 %% start gui for visualization of result
-%matRadGUI
+matRadGUI
 
 %% dvh
-matRad_calcDVH(resultGUI,cst,pln);
-
+%matRad_calcDVH(resultGUI,cst,pln);

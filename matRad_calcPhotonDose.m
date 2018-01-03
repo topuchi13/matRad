@@ -51,9 +51,9 @@ if sum(strcmp(pln.bioOptimization,{'effect','RBExD'}))>0
 end
 
 % initialize waitbar
-figureWait = waitbar(0,'calculate dose influence matrix for photons...');
+%figureWait = waitbar(0,'calculate dose influence matrix for photons...');
 % show busy state
-set(figureWait,'pointer','watch');
+%set(figureWait,'pointer','watch');
 
 % meta information for dij
 dij.numOfBeams         = pln.numOfBeams;
@@ -302,9 +302,9 @@ for i = 1:dij.numOfBeams % loop over all beams
                             floor(stf(i).totalNumOfBixels/max(1,round(stf(i).totalNumOfBixels/200))));
         end
         % update waitbar only 100 times
-        if mod(counter,round(dij.totalNumOfBixels/100)) == 0 && ishandle(figureWait)
-            waitbar(counter/dij.totalNumOfBixels);
-        end
+%         if mod(counter,round(dij.totalNumOfBixels/100)) == 0 && ishandle(figureWait)
+%             waitbar(counter/dij.totalNumOfBixels);
+%         end
         
         % remember beam and bixel number
         dij.beamNum(counter)  = i;

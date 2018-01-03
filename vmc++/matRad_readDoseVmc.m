@@ -18,7 +18,10 @@ function [bixelDose,bixelDoseError] = matRad_readDoseVmc(filename)
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fid = fopen(filename,'r');
+fid = fopen(filename,'r+');
+if fid==-1
+  error('Cannot open file for writing: %s', filename);
+end
 
 % read header (no regions, no histories, no batches, no beamlets, format specifier (dump_dose))
 Header     = fread(fid,5,'int32');

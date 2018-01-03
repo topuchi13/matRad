@@ -30,7 +30,7 @@ end
 
 % set output level. 0 = no vmc specific output. 1 = print to matlab cmd.
 % 2 = open in terminal(s)
-verbose = 0;
+verbose = 1;
 
 if ~isdeployed % only if _not_ running as standalone    
     % add path for optimization functions

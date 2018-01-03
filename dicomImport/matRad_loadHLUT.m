@@ -67,8 +67,8 @@ try
 catch
     warnText = {['Could not construct hlut file name from DICOM tags.' ...
         ' matRad default HLUT loaded']};
-    warndlg(warnText,'Could not load HLUT');
-    warning('matRad default HLUT loaded');
+    %warndlg(warnText,'Could not load HLUT');
+    %warning('matRad default HLUT loaded');
        
     hlutFileName = strcat(hlutDir,'matRad_default.hlut');
 
