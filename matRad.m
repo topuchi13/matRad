@@ -22,20 +22,20 @@ clc
 
 % load patient data, i.e. ct, voi, cst
 
-%load HEAD_AND_NECK
+load HEAD_AND_NECK
 %load TG119.mat
 %load PROSTATE.mat
 %load LIVER.mat
-load BOXPHANTOM.mat
+%load BOXPHANTOM.mat
 
 
 
 
 
-
-fields = 5;
-xa = 0;
 % Fill plan with equispaced fields
+fields = 3;
+xa = 0;
+
 for c=1:fields
 xa=xa+(360./fields);
 arr(c)=xa;
@@ -99,10 +99,12 @@ end
 
     options.FunctionTolerance = 2;
     options.MaxStallGenerations = 3;
-    options.PopulationSize = 10;
+    options.PopulationSize = 5;
     options.InitialPopulationMatrix = arr;
     fit_fun = @(set) ga_of(set,fields,ct,cst,pln);
-    [x,fval] = ga(fit_fun,fields,options);
+    Aeq = 360;
+    beq = 0;
+    [x,fval] = ga(fit_fun,fields,[],[],[],[],[],[],[],options);
 %end
 
 

@@ -297,10 +297,10 @@ for i = 1:dij.numOfBeams % loop over all beams
         end
 
         % Display progress and update text only 200 times
-        if mod(bixelsPerBeam,max(1,round(stf(i).totalNumOfBixels/200))) == 0
-            matRad_progress(bixelsPerBeam/max(1,round(stf(i).totalNumOfBixels/200)),...
-                            floor(stf(i).totalNumOfBixels/max(1,round(stf(i).totalNumOfBixels/200))));
-        end
+%         if mod(bixelsPerBeam,max(1,round(stf(i).totalNumOfBixels/200))) == 0
+%             matRad_progress(bixelsPerBeam/max(1,round(stf(i).totalNumOfBixels/200)),...
+%                             floor(stf(i).totalNumOfBixels/max(1,round(stf(i).totalNumOfBixels/200))));
+%         end
         % update waitbar only 100 times
 %         if mod(counter,round(dij.totalNumOfBixels/100)) == 0 && ishandle(figureWait)
 %             waitbar(counter/dij.totalNumOfBixels);
@@ -364,12 +364,12 @@ for i = 1:dij.numOfBeams % loop over all beams
     end
 end
 
-try
-  % wait 0.1s for closing all waitbars
-  allWaitBarFigures = findall(0,'type','figure','tag','TMWWaitbar'); 
-  delete(allWaitBarFigures);
-  pause(0.1);
-catch
+% try
+%   % wait 0.1s for closing all waitbars
+%   allWaitBarFigures = findall(0,'type','figure','tag','TMWWaitbar'); 
+%   delete(allWaitBarFigures);
+%   pause(0.1);
+% catch
 end
 
 

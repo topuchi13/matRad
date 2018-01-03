@@ -21,7 +21,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Output (C.1)
-options.ipopt.print_level                   = 5;
+options.ipopt.print_level                   = 0;
 options.ipopt.print_user_options            = 'no';
 options.ipopt.print_options_documentation   = 'no';
 
