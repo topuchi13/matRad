@@ -105,11 +105,11 @@ problem.Aineq = [];
 problem.Bineq = [];
 problem.Aeq = [];
 problem.Beq = [];
-problem.lb = zeros(1,fields);
-problem.ub = 360*ones(fields,1);
+problem.lb = zeros(;
+problem.ub = [];
 problem.nonlcon = [];
 problem.rngstate = [];
-problem.intcon = 1:fields;
+problem.intcon = [1 2 3 4 5];
 
 problem.options.FunctionTolerance = 2;
 problem.options.MaxStallGenerations = 3;

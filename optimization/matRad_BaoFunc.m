@@ -1,4 +1,4 @@
-function [resultGUI,info,of_value] = matRad_BaoFunc(dij,cst,pln)
+function [resultGUI,dij,info,of_value] = matRad_BaoFunc(ct,stf,cst,pln)
 %MATRAD_BAOFUNC iterates between beam angles
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % matRad inverse planning wrapper function
@@ -35,27 +35,30 @@ function [resultGUI,info,of_value] = matRad_BaoFunc(dij,cst,pln)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % issue warning if biological optimization impossible
-if sum(strcmp(pln.bioOptimization,{'LEMIV_effect','LEMIV_RBExD'}))>0 && (~isfield(dij,'mAlphaDose') || ~isfield(dij,'mSqrtBetaDose')) && strcmp(pln.radiationMode,'carbon')
-    warndlg('Alpha and beta matrices for effect based and RBE optimization not available - physical optimization is carried out instead.');
-    pln.bioOptimization = 'none';
-end
+% if sum(strcmp(pln.bioOptimization,{'LEMIV_effect','LEMIV_RBExD'}))>0 && (~isfield(dij,'mAlphaDose') || ~isfield(dij,'mSqrtBetaDose')) && strcmp(pln.radiationMode,'carbon')
+%     warndlg('Alpha and beta matrices for effect based and RBE optimization not available - physical optimization is carried out instead.');
+%     pln.bioOptimization = 'none';
+% end
+
+dij = matRad_calcPhotonDose(ct,stf,pln,cst);
+
 global of_value;
-if ~isdeployed % only if _not_ running as standalone
-    
-    % add path for optimization functions
-    matRadRootDir = fileparts(mfilename('fullpath'));
-    addpath(fullfile(matRadRootDir,'optimization'))
-    
-    % get handle to Matlab command window
-    mde         = com.mathworks.mde.desk.MLDesktop.getInstance;
-    cw          = mde.getClient('Command Window');
-    xCmdWndView = cw.getComponent(0).getViewport.getComponent(0);
-    h_cw        = handle(xCmdWndView,'CallbackProperties');
-
-    % set Key Pressed Callback of Matlab command window
-    set(h_cw, 'KeyPressedCallback', @matRad_CWKeyPressedCallback);
-
-end
+% if ~isdeployed % only if _not_ running as standalone
+%     
+% %     % add path for optimization functions
+% %     matRadRootDir = fileparts(mfilename('fullpath'));
+% %     addpath(fullfile(matRadRootDir,'optimization'))
+%     
+%     % get handle to Matlab command window
+%     mde         = com.mathworks.mde.desk.MLDesktop.getInstance;
+%     cw          = mde.getClient('Command Window');
+%     xCmdWndView = cw.getComponent(0).getViewport.getComponent(0);
+%     h_cw        = handle(xCmdWndView,'CallbackProperties');
+% 
+%     % set Key Pressed Callback of Matlab command window
+%     set(h_cw, 'KeyPressedCallback', @matRad_CWKeyPressedCallback);
+% 
+% end
 
 % initialize global variables for optimizer
 global matRad_global_x;
@@ -199,9 +202,9 @@ resultGUI = matRad_calcCubes(wOpt,dij,cst);
 resultGUI.wUnsequenced = wOpt;
 
 % unset Key Pressed Callback of Matlab command window
-if ~isdeployed
-    set(h_cw, 'KeyPressedCallback',' ');
-end
+% if ~isdeployed
+%     set(h_cw, 'KeyPressedCallback',' ');
+% end
 
 
 

@@ -21,8 +21,7 @@ pln.machine         = 'Generic';
 %% generate steering file
 stf = matRad_generateStf(ct,cst,pln);
 
-dij = matRad_calcPhotonDose(ct,stf,pln,cst);
-[resultGUI,info,of_value] = matRad_BaoFunc(dij,cst,pln);
+[~,~,~,of_value] = matRad_BaoFunc(ct,stf,cst,pln);
 
 step_val = of_value;
 

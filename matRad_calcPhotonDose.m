@@ -39,6 +39,9 @@ function dij = matRad_calcPhotonDose(ct,stf,pln,cst,calcDoseDirect)
 % set consistent random seed (enables reproducibility)
 rng(0);
 
+fprintf('Calculating this set of beams: ');
+pln.gantryAngles
+ 
 % default: dose influence matrix computation
 if ~exist('calcDoseDirect','var')
     calcDoseDirect = false;
