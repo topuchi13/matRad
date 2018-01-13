@@ -22,19 +22,22 @@ clc
 
 % load patient data, i.e. ct, voi, cst
 
+%load iskandurov.mat
+%load Mehmed.mat
 %load HEAD_AND_NECK
 %load TG119.mat
 %load PROSTATE.mat
 %load LIVER.mat
-load BOXPHANTOM.mat
+%load BOXPHANTOM.mat
+load mikaberidze.mat
 
 
-
-
+global of_value;
 
 % Fill plan with equispaced fields
 fields = 5;
 xa = 0;
+
 
 for c=1:fields
 xa=xa+(360./fields);
@@ -64,8 +67,6 @@ pln.machine         = 'Generic';
 %% generate steering file
 stf = matRad_generateStf(ct,cst,pln);
 
-global of_value;
-
 %% dose calculation
 % if strcmp(pln.radiationMode,'photons')
 %     dij = matRad_calcPhotonDose(ct,stf,pln,cst);
@@ -82,7 +83,7 @@ global of_value;
 
 
 %% BAO
-[resultGUI,dij,info,of_value] = matRad_BaoFunc(ct,stf,cst,pln);
+%[resultGUI,dij,info,of_value] = matRad_BaoFunc(ct,stf,cst,pln);
 
 %Generates random set of fields
 %while of_value > 12
@@ -116,8 +117,10 @@ problem.options.MaxStallGenerations = 3;
 problem.options.PopulationSize = 10;
 problem.options.InitialPopulationMatrix = arr;
 problem.options.StallTest = 'geometricWeighted';
-    
+problem.options.UseParallel = true;
+    tic
     [x,fval] = ga(problem);
+    toc
 %end
 
 
