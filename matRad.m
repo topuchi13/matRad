@@ -38,7 +38,7 @@ global of_value;
 fields = 5;
 xa = 0;
 
-
+%define angular distance between fields
 for c=1:fields
 xa=xa+(360./fields);
 arr(c)=xa;
@@ -62,7 +62,7 @@ pln.runDAO          = false; % 1/true: run DAO, 0/false: don't / will be ignored
 pln.machine         = 'Generic';
 
 %% initial visualization and change objective function settings if desired
-%matRadGUI
+matRadGUI
 
 %% generate steering file
 stf = matRad_generateStf(ct,cst,pln);
